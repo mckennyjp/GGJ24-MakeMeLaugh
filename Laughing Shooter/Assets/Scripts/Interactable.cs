@@ -4,11 +4,14 @@ using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour
 {
-
-    public string promptMessage;
+    //Add or remove an InteractionEvent component to this gameobject.
+    public bool useEvents;
+    [SerializeField] public string promptMessage;
 
     public void BaseInteract()
     {
+        if (useEvents)
+            GetComponent<InteractionEvent>().OnInteract.Invoke();
         Interact();
     }
 
