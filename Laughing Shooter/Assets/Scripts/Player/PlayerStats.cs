@@ -47,6 +47,15 @@ public class PlayerStats : MonoBehaviour
         healthBar.SetSlider(currentHealth);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Enemy")
+        {
+            Debug.Log("you are hurt");
+            TakeDamage(20f);
+        }
+    }
+
     private void Die()
     {
         Debug.Log("You are depressed");
