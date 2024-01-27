@@ -10,6 +10,7 @@ public class PlayerVoiceCommand : MonoBehaviour
     public float damage = 10f;
     public float range = 100f;
     public ParticleSystem muzzleFlash;
+    private PlayerStats stats;
 
     public Camera fpscam;
 
@@ -19,6 +20,9 @@ public class PlayerVoiceCommand : MonoBehaviour
     void Start()
     {
         actions.Add("ha", Ha);
+        actions.Add("he", He);
+
+        stats = GetComponent<PlayerStats>();
 
         keywordRecognizer = new KeywordRecognizer(actions.Keys.ToArray());
         keywordRecognizer.OnPhraseRecognized += RecognizedSpeech;
@@ -28,7 +32,10 @@ public class PlayerVoiceCommand : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            stats.Heal(20f);
+        }
     }
 
     private void RecognizedSpeech(PhraseRecognizedEventArgs speech)
@@ -40,6 +47,11 @@ public class PlayerVoiceCommand : MonoBehaviour
     {
         Shoot();
 
+    }
+
+    private void He()
+    {
+        stats.Heal(20f);
     }
 
     private void Shoot()
@@ -57,5 +69,6 @@ public class PlayerVoiceCommand : MonoBehaviour
             }
         }
     }
+
 
 }
