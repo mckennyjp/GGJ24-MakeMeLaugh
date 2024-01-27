@@ -7,14 +7,17 @@ using UnityEngine.Windows.Speech;
 
 public class PlayerVoiceCommand : MonoBehaviour
 {
+    public float damage = 10f;
+    public float range = 100f;
+
+    public Camera fpscam;
+
     private KeywordRecognizer keywordRecognizer;
     private Dictionary<string, Action> actions = new Dictionary<string, Action>();
 
     void Start()
     {
-        actions.Add("ha", Forward);
-        actions.Add("he", Back);
-        actions.Add("ho", Down);
+        actions.Add("ha", Ha);
 
         keywordRecognizer = new KeywordRecognizer(actions.Keys.ToArray());
         keywordRecognizer.OnPhraseRecognized += RecognizedSpeech;
@@ -24,7 +27,7 @@ public class PlayerVoiceCommand : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+    
     }
 
     private void RecognizedSpeech(PhraseRecognizedEventArgs speech)
@@ -32,20 +35,19 @@ public class PlayerVoiceCommand : MonoBehaviour
         Debug.Log(speech.text);
         actions[speech.text].Invoke();
     }
-    private void Forward()
+    private void Ha()
     {
-        transform.Translate(1, 0, 0);
+        RaycastHit hit;
+        if (Physics.Raycast(fpscam.transform.position, fpscam.transform.forward, out hit, range))
+        {
+            Debug.Log(hit.transform.name);
+
+            Target target = hit.transform.GetComponent<Target>();
+            if(target != null)
+            {
+                target.TakeDamage(damage);
+            }
+        }
     }
-    private void Back()
-    {
-        transform.Translate(-1, 0, 0);
-    }
-    private void Up()
-    {
-        transform.Translate(0, 1, 0);
-    }
-    private void Down()
-    {
-        transform.Translate(0, -1, 0);
-    }
+
 }
