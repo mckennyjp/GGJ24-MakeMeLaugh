@@ -59,8 +59,7 @@ public class PlayerVoiceCommand : MonoBehaviour
 
     private void He()
     {
-        stats.Heal(20f);
-        healSound.Play();
+        Heal();
         
     }
 
@@ -79,6 +78,12 @@ public class PlayerVoiceCommand : MonoBehaviour
                 target.TakeDamage(damage);
             }
         }
+    }
+
+    private void Heal()
+    {
+        stats.Heal(20f);
+        healSound.Play();
     }
 
 
