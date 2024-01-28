@@ -13,6 +13,7 @@ public class Target : MonoBehaviour
         health -= amount;
         if(health <= 0f)
         {
+            happySound.Play();
             Die();
         }
     }
@@ -20,7 +21,6 @@ public class Target : MonoBehaviour
     void Die()
     {
         crySound.Stop();
-        happySound.Play();
         Destroy(gameObject);
         Debug.Log("Dead");
     }
