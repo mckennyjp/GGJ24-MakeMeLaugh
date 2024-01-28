@@ -7,6 +7,7 @@ public class SadZombieController : MonoBehaviour
 {
     private NavMeshAgent agent = null;
    [SerializeField] private Transform target;
+    public float speed;
 
     private void Start()
     {
@@ -34,4 +35,15 @@ public class SadZombieController : MonoBehaviour
         //Quaternion rotation = Quaternion.LookRotation(direction, Vector3.up);
         //transform.rotation = rotation;
     }
-}
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "NoneShallPass")
+        {
+            GetComponent<NavMeshAgent>().isStopped = true;
+        }
+        else
+        {
+            GetComponent<NavMeshAgent>().isStopped = false;
+        }
+        }
+    }
