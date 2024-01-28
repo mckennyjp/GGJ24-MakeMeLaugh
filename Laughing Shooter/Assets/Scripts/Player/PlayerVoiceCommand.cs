@@ -11,6 +11,9 @@ public class PlayerVoiceCommand : MonoBehaviour
     public float range = 100f;
     public ParticleSystem muzzleFlash;
     private PlayerStats stats;
+    
+    [SerializeField] private AudioSource healSound;
+    [SerializeField] private AudioSource gunSound;
 
     public Camera fpscam;
 
@@ -36,6 +39,11 @@ public class PlayerVoiceCommand : MonoBehaviour
         {
             stats.Heal(20f);
         }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Shoot();
+        }
     }
 
     private void RecognizedSpeech(PhraseRecognizedEventArgs speech)
@@ -46,16 +54,18 @@ public class PlayerVoiceCommand : MonoBehaviour
     private void Ha()
     {
         Shoot();
-
     }
 
     private void He()
     {
         stats.Heal(20f);
+        healSound.Play();
+        
     }
 
     private void Shoot()
     {
+        gunSound.Play();
         muzzleFlash.Play();
         RaycastHit hit;
         if (Physics.Raycast(fpscam.transform.position, fpscam.transform.forward, out hit, range))

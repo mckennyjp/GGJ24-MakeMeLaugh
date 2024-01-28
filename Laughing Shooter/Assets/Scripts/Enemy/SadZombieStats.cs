@@ -6,11 +6,6 @@ public class SadZombieStats : MonoBehaviour
 {
     public float health = 50f;
 
-    private void Start()
-    {
-       
-    }
-
     public void TakeDamage(float amount)
     {
         health -= amount;
@@ -22,6 +17,7 @@ public class SadZombieStats : MonoBehaviour
 
     void Die()
     {
+
         Destroy(gameObject);
     }
 
