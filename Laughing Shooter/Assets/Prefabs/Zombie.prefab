@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 757645566620196396}
   - component: {fileID: 329526369236254012}
   - component: {fileID: 3599165416857309004}
-  - component: {fileID: 1051286578341740001}
+  - component: {fileID: 8564906188000493203}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Enemy
@@ -309,8 +309,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 30
   crySound: {fileID: 329526369236254012}
-  happySound: {fileID: 1051286578341740001}
---- !u!82 &1051286578341740001
+  happySound: {fileID: 8564906188000493203}
+--- !u!82 &8564906188000493203
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -320,7 +320,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 327985165d0e52041b1ea4c0cafc8071, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 82092f043123956429ba2b3e93f3bfa8, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -366,7 +366,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

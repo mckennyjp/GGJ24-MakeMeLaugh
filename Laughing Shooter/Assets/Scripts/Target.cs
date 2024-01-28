@@ -13,8 +13,7 @@ public class Target : MonoBehaviour
         health -= amount;
         if(health <= 0f)
         {
-            happySound.Play();
-            Die();
+            StartCoroutine(DeathSound());
         }
     }
 
@@ -23,6 +22,13 @@ public class Target : MonoBehaviour
         crySound.Stop();
         Destroy(gameObject);
         Debug.Log("Dead");
+    }
+
+    IEnumerator DeathSound()
+    {
+        happySound.Play();
+        yield return new WaitForSeconds(1f);
+        Die();
     }
 
 
