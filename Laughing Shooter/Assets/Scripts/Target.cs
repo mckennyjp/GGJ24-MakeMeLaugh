@@ -21,7 +21,8 @@ public class Target : MonoBehaviour
     {
         crySound.Stop();
         happySound.Play();
-        //Destroy(gameObject);
+        Destroy(gameObject);
+        Debug.Log("Dead");
     }
 
 
