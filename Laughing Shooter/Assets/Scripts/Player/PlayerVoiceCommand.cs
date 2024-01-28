@@ -41,7 +41,7 @@ public class PlayerVoiceCommand : MonoBehaviour
             healSound.Play();
         }
 
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.V))
         {
             Shoot();
         }

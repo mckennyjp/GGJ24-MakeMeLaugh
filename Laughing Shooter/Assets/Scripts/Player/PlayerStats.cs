@@ -28,10 +28,6 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            TakeDamage(20f);
-        }
 
         if (currentHealth > maxHealth)
         {
