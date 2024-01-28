@@ -39,11 +39,21 @@ public class SadZombieController : MonoBehaviour
     {
         if (collision.gameObject.tag == "NoneShallPass")
         {
-            GetComponent<NavMeshAgent>().isStopped = true;
+            agent.isStopped = true;
+            print("Stopped");
+            StartCoroutine(setNavMesh());
         }
         else
         {
-            GetComponent<NavMeshAgent>().isStopped = false;
+            agent.isStopped = false;
         }
         }
+
+    IEnumerator setNavMesh()
+    {
+        yield return new WaitForSeconds(1f);
+        print("Turn nav on");
+        agent.isStopped = false;
+
+    }
     }
