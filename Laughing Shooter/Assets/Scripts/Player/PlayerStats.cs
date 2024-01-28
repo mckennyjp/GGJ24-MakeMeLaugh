@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -62,5 +63,6 @@ public class PlayerStats : MonoBehaviour
     private void Die()
     {
         Debug.Log("You are depressed");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
