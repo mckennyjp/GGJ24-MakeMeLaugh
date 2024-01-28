@@ -8,6 +8,8 @@ public class PlayerStats : MonoBehaviour
 
     public float currentHealth;
 
+    [SerializeField] private AudioSource hurtSound;
+
     public HealthBar healthBar;
     private void Start()
     {
@@ -51,6 +53,7 @@ public class PlayerStats : MonoBehaviour
     {
         if(other.gameObject.tag == "Enemy")
         {
+            hurtSound.Play();
             Debug.Log("you are hurt");
             TakeDamage(20f);
         }

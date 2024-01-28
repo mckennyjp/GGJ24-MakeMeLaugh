@@ -38,6 +38,7 @@ public class PlayerVoiceCommand : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.H))
         {
             stats.Heal(20f);
+            healSound.Play();
         }
 
         if (Input.GetKeyDown(KeyCode.P))
